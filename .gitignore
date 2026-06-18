@@ -1,0 +1,16 @@
+# WebStorm / JetBrains
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build / packaging
+dist/
+*.zip
+*.crx
+*.pem
+
+# Node (if you ever add a build step)
+node_modules/

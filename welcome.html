@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Bookmarklets</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--page);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 14px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 420px;
+      width: 100%;
+      padding: 36px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      width: 56px; height: 56px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+    h1 { font-size: 20px; font-weight: 700; color: var(--heading); }
+
+    .lead {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin: 14px 0 24px;
+    }
+
+    .steps {
+      list-style: none;
+      text-align: left;
+      display: inline-block;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+    .steps li strong { color: var(--heading); font-weight: 600; }
+
+    .btn {
+      margin-top: 26px;
+      width: 100%;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 9px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: filter .15s;
+    }
+    .btn:hover { filter: brightness(1.08); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">⚡</div>
+    <h1>Welcome to Bookmarklets</h1>
+
+    <p class="lead">
+      For easy access to the settings, pin the extension to your toolbar:
+    </p>
+
+    <ol class="steps">
+      <li>1. Click the <strong>🧩 puzzle piece</strong> in the toolbar</li>
+      <li>2. Find <strong>Bookmarklets</strong></li>
+      <li>3. Click the <strong>📌 pin</strong> icon</li>
+    </ol>
+
+    <button class="btn" id="open-settings">Open Settings</button>
+  </main>
+
+  <script src="themes.js"></script>
+  <script src="welcome.js"></script>
+</body>
+</html>

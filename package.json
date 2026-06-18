@@ -1,0 +1,8 @@
+{
+  "name": "bookmarklets-extension",
+  "private": true,
+  "description": "Build tooling for the Bookmarklets Chrome extension. The extension itself has no build step; this only packages a clean release ZIP. Version lives in manifest.json.",
+  "scripts": {
+    "build": "node build.js"
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookmarklets</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 240px;
+      background: var(--panel);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+    }
+
+    .header {
+      padding: 14px 16px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .logo {
+      width: 34px; height: 34px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+    }
+    .logo-text h1 { font-size: 14px; font-weight: 700; color: var(--heading); }
+    .logo-text p  { font-size: 10px; color: var(--text-ghost); margin-top: 1px; }
+
+    /* Status pill */
+    .status {
+      margin: 14px 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9px;
+      padding: 10px 12px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      transition: background .3s;
+    }
+    .dot.on  { background: var(--success); box-shadow: 0 0 7px var(--success-glow); }
+    .dot.off { background: var(--border); }
+    .status-info { flex: 1; }
+    .status-line1 { font-size: 12px; font-weight: 600; color: var(--text-2); }
+    .status-line2 { font-size: 10px; color: var(--text-faint); margin-top: 2px; font-family: monospace; }
+
+    /* Stats row */
+    .stats {
+      display: flex;
+      gap: 6px;
+      padding: 10px 14px;
+    }
+    .stat {
+      flex: 1;
+      background: var(--sunken);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    .stat-n { font-size: 19px; font-weight: 700; color: var(--stat-num); line-height: 1; }
+    .stat-l { font-size: 9px; color: var(--text-ghost); text-transform: uppercase; letter-spacing: .5px; margin-top: 3px; }
+
+    /* Settings button */
+    .settings-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: calc(100% - 28px);
+      margin: 2px 14px 14px;
+      padding: 9px;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-label);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .settings-btn:hover {
+      background: var(--hover);
+      color: var(--text-secondary);
+      border-color: var(--accent);
+    }
+    .settings-btn span { font-size: 14px; }
+
+    /* Add root button */
+    .add-root-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: calc(100% - 28px);
+      margin: 6px 14px 0;
+      padding: 9px;
+      background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+    }
+    .add-root-btn:hover { opacity: .88; }
+    .add-root-btn:active { transform: scale(.97); }
+    .add-root-btn.visible { display: flex; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">⚡</div>
+    <div class="logo-text">
+      <h1>Bookmarklets</h1>
+      <p>AEM &amp; dev power tools</p>
+    </div>
+  </div>
+
+  <div class="status" id="status-box">
+    <div class="dot off" id="dot"></div>
+    <div class="status-info">
+      <div class="status-line1" id="status-line1">Checking…</div>
+      <div class="status-line2" id="status-line2"></div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="s-groups">–</div><div class="stat-l">Groups</div></div>
+    <div class="stat"><div class="stat-n" id="s-items">–</div><div class="stat-l">Bookmarklets</div></div>
+    <div class="stat"><div class="stat-n" id="s-roots">–</div><div class="stat-l">URL Roots</div></div>
+  </div>
+
+  <button class="add-root-btn" id="add-root-btn"></button>
+
+  <button class="settings-btn" id="open-settings">
+    <span>⚙️</span> Settings
+  </button>
+
+  <script src="themes.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

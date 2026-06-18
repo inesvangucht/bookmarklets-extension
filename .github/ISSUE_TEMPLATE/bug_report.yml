@@ -1,0 +1,108 @@
+name: Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One sentence description of the problem.
+      placeholder: e.g. Switch Root bookmarklet navigates to a relative path instead of the target origin
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1. Open sidebar on …
+        2. Click …
+        3. Observe …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: Expected vs actual
+      value: |
+        ✓ Expected: …
+        ✗ Actual: …
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_files
+    attributes:
+      label: Affected files
+      placeholder: e.g. content.js, options.js
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Relevant context, constraints, related issues, browser/version info.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - sidebar
+        - options
+        - url-groups
+        - storage
+        - dx
+        - other
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## For Claude Code
+
+        Before touching anything, read these in order:
+        1. `bookmarklets-state.md` — current feature status, known issues, architecture notes. Do **not** edit this file directly.
+        2. `README.md` — user-facing overview and setup instructions.
+        3. `docs/` — store listing, privacy policy, release plan.
+        4. Any files listed in "Affected files" above.
+
+        **Branch:** `fix/<slug>` from `main`.
+
+        **Implementation rules:**
+        - Minimal edits consistent with existing patterns in `content.js` and `options.js`
+        - All sidebar DOM access must use the `getEl()` helper — never `document.getElementById` directly
+        - Sidebar CSS lives as `SIDEBAR_CSS` string inside `content.js` — do not add external stylesheets
+        - JS snippets must be executed via `background.js` `EXECUTE_SCRIPT` message — never inline `eval`
+        - Storage keys are `bml_data` and `bml_roots` on `chrome.storage.sync` — do not add new top-level keys without discussion
+        - If a pattern seems wrong for this fix, stop — leave a comment in the PR instead of bending it silently
+
+        **Documentation — update if your fix changes behaviour:**
+        - `README.md` — if user-facing behaviour changes
+        - `docs/` — if store listing or privacy policy is affected
+
+        **Pull request description must include:**
+        1. **What & why** — 2–4 sentences
+        2. **Files touched** — bullet list
+        3. **How to test** — exact steps: which page to open, what to click, what to observe
+        4. **State doc updates needed** — list any items in `bookmarklets-state.md` that should be moved or updated (do not edit the file yourself — note them here)
+        5. **Docs updated?** — yes/no, and which files
+
+        **Hard rules — never break these:**
+        - Manifest V3 — no deprecated APIs
+        - `options_ui` not `options_page` in manifest
+        - Shadow DOM only for sidebar elements — always use `getEl()`
+        - `chrome.scripting.executeScript` for JS snippets, called from `background.js`
+        - Dynamic tokens (`{random}`, `{random:N}`, `{ts}`, `{date}`) resolved in `resolveTokens()` in `content.js` — do not resolve them elsewhere
+        - Import must always construct `{ groups: parsed.groups }` — never assign parsed JSON directly to `bmlData`
+        - Switch Root must normalise protocol before navigating — bare domains must get `https://` prepended
+        - Export must strip `urlGroupIds` for portability
+
+        If a hard rule conflicts with the task, do not proceed. Open a draft PR with a comment explaining the conflict.
