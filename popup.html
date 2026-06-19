@@ -7,8 +7,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 240px;
-      background: var(--panel);
-      color: var(--text);
+      background: var(--bml-panel);
+      color: var(--bml-text);
       font-family: 'Segoe UI', system-ui, sans-serif;
       font-size: 13px;
     }
@@ -18,17 +18,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      border-bottom: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--bml-border-dim);
     }
     .logo {
       width: 34px; height: 34px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      background: linear-gradient(135deg, var(--bml-accent), var(--bml-accent-alt));
       border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
       font-size: 17px;
     }
-    .logo-text h1 { font-size: 14px; font-weight: 700; color: var(--heading); }
-    .logo-text p  { font-size: 10px; color: var(--text-ghost); margin-top: 1px; }
+    .logo-text h1 { font-size: 14px; font-weight: 700; color: var(--bml-heading); }
+    .logo-text p  { font-size: 10px; color: var(--bml-text-ghost); margin-top: 1px; }
 
     /* Status pill */
     .status {
@@ -36,8 +36,8 @@
       display: flex;
       align-items: center;
       gap: 9px;
-      background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--bml-surface);
+      border: 1px solid var(--bml-border-subtle);
       border-radius: 9px;
       padding: 10px 12px;
     }
@@ -45,11 +45,11 @@
       width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
       transition: background .3s;
     }
-    .dot.on  { background: var(--success); box-shadow: 0 0 7px var(--success-glow); }
-    .dot.off { background: var(--border); }
+    .dot.on  { background: var(--bml-success); box-shadow: 0 0 7px var(--bml-success-glow); }
+    .dot.off { background: var(--bml-border); }
     .status-info { flex: 1; }
-    .status-line1 { font-size: 12px; font-weight: 600; color: var(--text-2); }
-    .status-line2 { font-size: 10px; color: var(--text-faint); margin-top: 2px; font-family: monospace; }
+    .status-line1 { font-size: 12px; font-weight: 600; color: var(--bml-text-2); }
+    .status-line2 { font-size: 10px; color: var(--bml-text-faint); margin-top: 2px; font-family: monospace; }
 
     /* Stats row */
     .stats {
@@ -59,14 +59,14 @@
     }
     .stat {
       flex: 1;
-      background: var(--sunken);
-      border: 1px solid var(--border-dim);
+      background: var(--bml-sunken);
+      border: 1px solid var(--bml-border-dim);
       border-radius: 8px;
       padding: 8px 6px;
       text-align: center;
     }
-    .stat-n { font-size: 19px; font-weight: 700; color: var(--stat-num); line-height: 1; }
-    .stat-l { font-size: 9px; color: var(--text-ghost); text-transform: uppercase; letter-spacing: .5px; margin-top: 3px; }
+    .stat-n { font-size: 19px; font-weight: 700; color: var(--bml-stat-num); line-height: 1; }
+    .stat-l { font-size: 9px; color: var(--bml-text-ghost); text-transform: uppercase; letter-spacing: .5px; margin-top: 3px; }
 
     /* Settings button */
     .settings-btn {
@@ -77,19 +77,19 @@
       width: calc(100% - 28px);
       margin: 2px 14px 14px;
       padding: 9px;
-      background: var(--raised);
-      border: 1px solid var(--border);
+      background: var(--bml-raised);
+      border: 1px solid var(--bml-border);
       border-radius: 8px;
-      color: var(--text-label);
+      color: var(--bml-text-label);
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
       transition: background .15s, color .15s, border-color .15s;
     }
     .settings-btn:hover {
-      background: var(--hover);
-      color: var(--text-secondary);
-      border-color: var(--accent);
+      background: var(--bml-hover);
+      color: var(--bml-text-secondary);
+      border-color: var(--bml-accent);
     }
     .settings-btn span { font-size: 14px; }
 
@@ -102,7 +102,7 @@
       width: calc(100% - 28px);
       margin: 6px 14px 0;
       padding: 9px;
-      background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+      background: linear-gradient(135deg, var(--bml-gradient-from), var(--bml-gradient-to));
       border: none;
       border-radius: 8px;
       color: #fff;
