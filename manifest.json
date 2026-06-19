@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Bookmarklets",
   "version": "1.0.0",
-  "description": "A floating sidebar with quick-access bookmarklets — path navigation, query injection, JS snippets, URL transforms, and environment switching. Only appears on sites you choose.",
+  "description": "A slick sidebar for your dev bookmarklets: navigate paths, inject queries, run JS, URL find & replace. Only on roots you pick.",
   "permissions": [
     "storage",
     "activeTab",
